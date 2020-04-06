@@ -1,15 +1,15 @@
 // Множественное использование
-var prevSum = 0;
-let sum = (x) => {
-  if (x == undefined) return prevSum;
-  let summ = x;
+const sum = (x) => {
+  if (x === undefined) {
+    return summ;
+  }
+  window.summ = x;
+
   return (y) => {
     if (y !== undefined) {
-      return sum(summ + y)
-    } else {
-      prevSum = summ;
-      return summ;
+      return sum(summ + y);
     }
+    return summ;
   }
 }
 console.log(sum(1)(2)(3)(4)());
@@ -17,17 +17,13 @@ console.log(sum())
 
 
 // Сумма всех аргуметов
-var prevSum1 = 0;
 let sum1 = (n)  => {
-  let summ = 0;
+  window.summ1 = 0;
   if (n.length !== 0) {
     for (let i = 0; i < n.length; i++) {
-      summ += n[i];
+      summ1 += n[i];
     }
-    prevSum = summ;
-    return summ;
+    return summ1;
   }
-  else {
-    return prevSum
-  };
+  return summ1;
 }
