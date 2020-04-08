@@ -1,17 +1,18 @@
 'use strict';
 
 async function promiseReduce(asyncFunction = [], reduce, initialValue = 0) {
+  let sum = initialValue;
   for (let i = 0; i < asyncFunction.length; i++)
   try {
-    initialValue = reduce(initialValue, await asyncFunction[i]())
+    sum = reduce(sum, await asyncFunction[i]())
   }
-  catch (error) {
-    console.error(`${asyncFunction[i].name} failed with ${error}`)
+  catch (err) {
+    console.error(`${asyncFunction[i].name} failed with ${err}`)
   }
-  return Promise.resolve(initialValue);
+  return Promise.resolve(sum);
 }
 
-var fn1 = () => {
+const fn1 = () => {
   console.log('fn1')
   return Promise.resolve(1)
 }
@@ -19,7 +20,7 @@ const fn2 = () => new Promise(() => {
   console.log('fn3');
   throw new Error('Offline');
 });
-var fn3 = () => new Promise(resolve => {
+const fn3 = () => new Promise(resolve => {
   console.log('fn2')
   setTimeout(() => resolve(2), 1000)
 })
