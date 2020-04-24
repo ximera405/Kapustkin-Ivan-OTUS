@@ -1,0 +1,11 @@
+{
+  "name": "nodejs-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "request.js",
+  "scripts": {
+    "test": "start"
+  },
+  "author": "Ivan k.",
+  "license": "ISC"
+}
