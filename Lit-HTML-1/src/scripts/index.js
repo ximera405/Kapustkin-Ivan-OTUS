@@ -4,9 +4,20 @@ class MyTree extends LitElement {
   constructor() {
     super();
 
-    this.items = { id: 1, items: [{ id: 2, items: [{ id: 3 }] }] };
+    this.items = [{
+      id: 1,
+      items: [
+        {
+          id: 2,
+          items: [
+            {
+              id: 3,
+            },
+          ],
+        },
+      ],
+    }]
   }
-
   static get properties() {
     return {
       items: {
@@ -16,21 +27,20 @@ class MyTree extends LitElement {
   }
 
   render() {
-    let id = 1;
     function getLastOne(obj) {
-      return getItem(obj, id);
-      function getItem(o, id) {
-          for(var prop in o) {
-              if(typeof(o[prop]) === 'object') {
-                return (
-                  html`<li>${id}${getItem(o[prop], id + 1)}</li>`
-                )
-              } else {
-                html`<li>${id}</li>`;
-              }
-          }
-      }}
-    return html`<ul>${getLastOne(this.items)}</ul>`;
+      return getItem(obj);
+      function getItem(o) {
+        let id = 1;
+        for (var prop in o) {
+          if (typeof o[prop] === "object") {
+            return html`<li>${o[prop].id}${getItem(o[prop])}</li>`;
+          } else console.log('')
+        }
+      }
+    }
+    return html`<ul>
+      ${getLastOne(this.items)}
+    </ul>`;
   }
 }
 
