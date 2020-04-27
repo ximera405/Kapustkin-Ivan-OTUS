@@ -30,11 +30,10 @@ class MyTree extends LitElement {
     function getLastOne(obj) {
       return getItem(obj);
       function getItem(o) {
-        let id = 1;
         for (var prop in o) {
           if (typeof o[prop] === "object") {
             return html`<li>${o[prop].id}${getItem(o[prop])}</li>`;
-          } else console.log('')
+          }
         }
       }
     }
