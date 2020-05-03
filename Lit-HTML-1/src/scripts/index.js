@@ -3,25 +3,12 @@ import { LitElement, html, css } from "lit-element";
 class MyTree extends LitElement {
   constructor() {
     super();
-
-    this.items = [{
-      id: 1,
-      items: [
-        {
-          id: 2,
-          items: [
-            {
-              id: 3,
-            },
-          ],
-        },
-      ],
-    }]
   }
+
   static get properties() {
     return {
       items: {
-        type: Object,
+        type: Array,
       },
     };
   }
@@ -30,14 +17,28 @@ class MyTree extends LitElement {
     function getLastOne(obj) {
       return getItem(obj);
       function getItem(o) {
-        for (var prop in o) {
-          if (typeof o[prop] === "object") {
-            return html`<li>${o[prop].id}${getItem(o[prop])}</li>`;
-          }
+        if (o) {
+          return html`<li class="list-item">${o[0].id}${getItem(o[0].items)}</li>`;
         }
+        else return;
       }
     }
-    return html`<ul>
+    return html`
+    <style>
+      .list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border: 1px solid black;
+      }
+
+      .list-item {
+        margin-left: 15px;
+        margin-top: 15px;
+        border: 1px solid red;
+      }
+    </style>
+    <ul class="list">
       ${getLastOne(this.items)}
     </ul>`;
   }
