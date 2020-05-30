@@ -4,17 +4,18 @@ const fs = require("fs");
 const hostname = "localhost";
 const port = 3000;
 
-
-  const server = http.createServer((req, res) => {
+const server = http
+  .createServer((req, res) => {
     res.setTimeout(100, () => {
       res.statusCode = 200;
       res.setHeader("Content-Type", "text/plain");
-      res.end('Hi node')
-    })
-  }).listen(port, hostname, () => {
+      res.end("Hi node");
+    });
+  })
+  .listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
   });
 
-fs.readFile('../index.html', (err, text) => {
-  console.log(text)
-})
+fs.readFile("../index.html", (err, text) => {
+  console.log(text);
+});
