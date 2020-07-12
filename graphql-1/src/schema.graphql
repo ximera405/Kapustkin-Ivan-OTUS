@@ -1,0 +1,47 @@
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  age: Int
+}
+
+type Product {
+  id: ID!
+  price: Int!
+  name: String!
+  description: String
+  isStock: Boolean!
+  stockPrice: Int
+}
+
+type New {
+  id: ID!
+  heading: String!
+  text: String!
+  subtitle: String
+}
+
+type Query {
+  users: [User!]!
+  user(id: ID!): User!
+
+  product(id: ID!): Product!
+  products: [Product!]!
+
+  new(id: ID!): New!
+  news: [New!]!
+}
+
+type Mutation {
+  createUser(id: ID!, name: String!, email: String!, age: Int): User!
+  updateUser(id: ID!, name: String, email: String, age: Int): User!
+  deleteUser(id: ID!): User!
+
+  createProduct(id: ID!, price: Int!, name: String!, isStock: Boolean!, description: String, stockPrice: Int): Product!
+  updateProduct(id: ID!, price: Int, name: String, description: String, isStock: Boolean, stockPrice: Int): Product!
+  deleteProduct(id: ID!): Product!
+
+  createNew(id: ID!, heading: String!, text: String!, subtitle: String): New!
+  updateNew(id: ID!, heading: String, text: String, subtitle: String): New!
+  deleteNew(id: ID!): New!
+}
