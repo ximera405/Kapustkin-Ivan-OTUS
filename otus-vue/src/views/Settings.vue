@@ -4,45 +4,49 @@
       <div class="settings-form__checkbox-container">
         <span>Выберите тип вычеслений</span>
         <div>
-        <input
-          class="settings-form__checkbox"
-          type="checkbox"
-          id="plus"
-          name="plus"
-        />
-        <label class="settings-form__label" for="+">+</label>
+          <input
+            v-model="type"
+            class="settings-form__checkbox"
+            type="checkbox"
+            id="plus"
+            value="+"
+          />
+          <label class="settings-form__label" for="+">+</label>
         </div>
         <div>
-        <input
-          class="settings-form__checkbox"
-          type="checkbox"
-          id="minus"
-          name="minus"
-        />
-        <label class="settings-form__label" for="scales">-</label>
+          <input
+            v-model="type"
+            class="settings-form__checkbox"
+            type="checkbox"
+            id="minus"
+            value="-"
+          />
+          <label class="settings-form__label" for="scales">-</label>
         </div>
         <div>
-        <input
-          class="settings-form__checkbox"
-          type="checkbox"
-          id="multiple"
-          name="multiple"
-        />
-        <label class="settings-form__label" for="*">*</label>
+          <input
+            v-model="type"
+            class="settings-form__checkbox"
+            type="checkbox"
+            id="multiple"
+            value="*"
+          />
+          <label class="settings-form__label" for="*">*</label>
         </div>
         <div>
-        <input
-          class="settings-form__checkbox"
-          type="checkbox"
-          id="drop"
-          name="drop"
-        />
-        <label class="settings-form__label" for="/">/</label>
+          <input
+            v-model="type"
+            class="settings-form__checkbox"
+            type="checkbox"
+            id="drop"
+            value="/"
+          />
+          <label class="settings-form__label" for="/">/</label>
         </div>
       </div>
       <div>
         <label for="difficult">Выберите сложность</label>
-        <select name="difficult" id="difficult">
+        <select name="difficult" id="difficult" v-model="difficult">
           <option value="easy">Легкая</option>
           <option value="normal">Нормальная</option>
           <option value="hard">Сложная</option>
@@ -50,8 +54,9 @@
       </div>
       <div>
         <label for="time">Введите время раунда</label>
-        <input id="time" type="number" />
+        <input v-model="time" id="time" type="number" />
       </div>
+      <button type="button" v-on:click="onSaveClick()">СОХРАНИТЬ</button>
     </form>
   </div>
 </template>
@@ -60,7 +65,22 @@
 // @ is an alias to /src
 
 export default {
-  name: "Settings"
+  name: "Settings",
+  data: function() {
+    return {
+      type: [],
+      difficult: "",
+      time: 0
+    };
+  },
+  methods: {
+    onSaveClick() {
+      this.$store.commit("SET_TYPE", this.type);
+      this.$store.commit("SET_DIFFICULT", this.difficult);
+      this.$store.commit("SET_TIME", this.time);
+      console.log(this.type, this.difficult, this.time);
+    }
+  }
 };
 </script>
 
