@@ -5,11 +5,39 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    typeofCalculations: [],
+    type: [],
     difficult: 1,
-    roundTime: 100
+    time: 100,
+    trainingResult: 0
   },
-  mutations: {},
+  mutations: {
+    SET_TYPE: (state, payload) => {
+      state.type = payload;
+    },
+    SET_DIFFICULT: (state, payload) => {
+      state.difficult = payload;
+    },
+    SET_TIME: (state, payload) => {
+      state.time = payload;
+    },
+    SET_TRAINING_RESULT: (state, payload) => {
+      state.trainingResult = payload;
+    }
+  },
+  getters: {
+    type: state => {
+      return state.type;
+    },
+    difficult: state => {
+      return state.difficult;
+    },
+    time: state => {
+      return state.time;
+    },
+    trainingResult: state => {
+      return state.trainingResult;
+    }
+  },
   actions: {},
   modules: {}
 });

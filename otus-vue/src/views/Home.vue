@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <HelloWorld msg="Welcome to Your Vue.js App" />
+    <p>Успешных тренировок сегодня {{ trainingResult }}</p>
   </div>
 </template>
 
@@ -12,6 +13,11 @@ export default {
   name: "Home",
   components: {
     HelloWorld
+  },
+  data: function() {
+    return {
+      trainingResult: this.$store.getters.trainingResult,
+    }
   }
 };
 </script>
