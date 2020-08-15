@@ -6,4 +6,12 @@ export interface WeatherModel {
     temperature: number;
     wind: string;
   }[];
+
+  topWeatherList: {
+    id: number;
+    city: string;
+    isRain: boolean;
+    temperature: number;
+    wind: string;
+  }[]
 }
