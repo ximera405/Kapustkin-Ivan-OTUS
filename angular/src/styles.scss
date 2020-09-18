@@ -1,4 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/scss/bootstrap';
+@import "~font-awesome/scss/font-awesome.scss";
+@import "~@fortawesome/fontawesome-free/css/all.css";
+@import '~ngx-toastr/toastr';
+@import '~ngx-toastr/toastr-bs4-alert';
+
+.toast-title {
+  color: darkslategray;
+}
+
+.toast-message {
+  color: darkslategray;
+}
+
 body {
   margin: 0;
 }
